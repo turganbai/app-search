@@ -28,6 +28,7 @@ class Hotel extends Model
     public function scopeFilter($query, Request $request)
     {
         Filter::run($query, 'name', (new LikeHandle( $request->has('name')))->setValue($request->get('name')));
+        Filter::run($query, 'bedrooms', (new EqualHandle($request->has('bedrooms')))->setValue($request->get('bedrooms')));
         Filter::run($query, 'bathrooms', (new EqualHandle($request->has('bathrooms')))->setValue($request->get('bathrooms')));
         Filter::run($query, 'stories', (new EqualHandle($request->has('stories')))->setValue($request->get('stories')));
         Filter::run($query, 'garages', (new EqualHandle($request->has('garages')))->setValue($request->get('garages')));
