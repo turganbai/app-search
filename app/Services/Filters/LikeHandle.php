@@ -11,7 +11,8 @@ class LikeHandle extends Handler
     public function run(Builder $query, $attribute)
     {
         if ($this->has){
-            $query->where($attribute, 'like', '%'.$this->value.'%');
+            $value = strtolower(trim($this->value));
+            $query->whereRaw("LOWER(`$attribute`) LIKE '%$value%'");
         }
     }
 
