@@ -11,6 +11,6 @@ class HotelController extends Controller
 {
     public function search(Request $request)
     {
-        return response()->json(HotelResource::collection(Hotel::query()->get()), Response::HTTP_OK);
+        return response()->json(HotelResource::collection(Hotel::filter($request)->get()), Response::HTTP_OK);
     }
 }
